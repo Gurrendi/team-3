@@ -34,14 +34,7 @@ function display(value) {
                $("#output").val(currentValue + value);
                hasDecimal = true;
             }
-         } else if (
-            currentValue != "" &&
-            (value == "+" ||
-               value == "*" ||
-               value == "/" ||
-               value == "%" ||
-               value == "-")
-         ) {
+         } else if (currentValue != "" &&(value == "+" || value == "*" ||value == "/" ||value == "%" ||value == "-")) {
             $("#output").val(currentValue + value);
             hasDecimal = false;
          }
@@ -110,7 +103,7 @@ function calculate() {
       }
       var q = eval(p);
       var result = q;
-      $("#output").val(Number(result).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0}));
+      $("#output").val(Number(result).toLocaleString('en-US'));
       if ((currentValue = "")) {
          result = "0";
       }
