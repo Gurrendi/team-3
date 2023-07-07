@@ -102,19 +102,25 @@ function toggleSign() {
 function calculate() {
    try {
       var p = $("#output").val();
+         // Check if the expression ends with an operator
+      if (/[+\-*/]$/.test(p)) {
+         // If it does, append the last operand to the end of the expression
+         var lastOperand = p.match(/[\d.]+$/);
+         p += lastOperand;
+      }
       var q = eval(p);
       var result = q;
-      if (result.length > 20) {
+      $("#output").val(Number(result).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0}));
+      if ((currentValue = "")) {
+         result = "0";
+      }
+      hasResultDisplayed = true;
+      if (result.length < 20) {
          result = result.substring(0, 20);
       }
       if (result === Infinity || result === -Infinity) {
          result = "Cannot divide by zero";
       }
-      $("#output").val(result);
-      if ((currentValue = "")) {
-         result = "0";
-      }
-      hasResultDisplayed = true;
    } catch (error) {
       $("#output").val("Error");
    }
