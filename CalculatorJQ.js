@@ -141,7 +141,7 @@ $(document).ready(function () {
       } else if (key == "Delete") {
          clearScreen();
       }else if (key =="M"){
-         subtract();
+         toggleSign();
       }
    });
 
