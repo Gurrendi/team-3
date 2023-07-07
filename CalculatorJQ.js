@@ -8,6 +8,10 @@ function display(value) {
       currentValue = "";
       hasResultDisplayed=false;
    }
+   if (hasResultDisplayed && !isNaN(uniChar)) {
+      currentValue = "";
+      hasResultDisplayed=false;
+   }
    if (hasResultDisplayed && value == ".") {
       currentValue = "";
       hasResultDisplayed = false;
@@ -60,20 +64,6 @@ function display(value) {
       }
       $("#output").val(currentValue + value);
       // $("#output").val(addCommas(currentValue + value));
-
-      // if (value == '.') {
-      //  hasDecimal = true;
-      // }
-      //replace operator
-      //  var lastCharIsOperator = isNaN(currentValue.slice(-1)) && currentValue.slice(-1) !== '.';
-
-      //  if (lastCharIsOperator) {
-      //    // if the last character is an operator, replace it with the new operator
-      //    $('#output').val(currentValue.slice(0, -1) + value);
-      //  } else {
-      //    // otherwise, append the value to the input
-      //    $('#output').val(currentValue + value);
-      //  }
    }
 }
 //add comma every 3 digit
@@ -144,6 +134,8 @@ $(document).ready(function () {
          subtract();
       } else if (key == "Delete") {
          clearScreen();
+      }else if (key =="M"){
+         subtract();
       }
    });
 
