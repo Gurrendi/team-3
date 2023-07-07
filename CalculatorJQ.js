@@ -76,6 +76,11 @@ function display(value) {
       //  }
    }
 }
+//add comma every 3 digit
+// function addCommas(str){
+//    return str.replace(/\W/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//}
+
 //clearScreen
 function clearScreen() {
    $("#output").val("");
@@ -124,31 +129,20 @@ function calculate() {
       $("#output").val("Error");
    }
 }
-// function addCommas(str){
-//    return str.replace(/\W/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-// }
+
 // load the document=HTML&CSS
 $(document).ready(function () {
 
    //for keyboard
    $(document).on("keydown", function (e) {
       var key = e.key;
-      if (
-         $.isNumeric(key) ||
-         key == "+" ||
-         key == "-" ||
-         key == "*" ||
-         key == "/" ||
-         key == "." ||
-         key == "%"
-      ){
+      if ($.isNumeric(key) ||key == "+" ||key == "-" ||key == "*" ||key == "/" ||key == "." ||key == "%"){
          display(key);
       } else if (key == "Enter") {
          calculate();
       } else if (key == "Backspace") {
          subtract();
       } else if (key == "Delete") {
-         $("#output").val("");
          clearScreen();
       }
    });
