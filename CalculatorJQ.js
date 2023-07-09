@@ -3,7 +3,8 @@ var hasResultDisplayed = false;
 //control the input
 function display(value) {
    var currentValue = $("#output").val();
-   var uniChar = currentValue.slice(-1);
+   var uniChar = currentValue.slice(-1);;
+
    if (hasResultDisplayed && !isNaN(value)) {
       currentValue = "";
       hasResultDisplayed=false;
@@ -26,6 +27,28 @@ function display(value) {
       hasDecimal = true;
       return;
    }
+   // display ZERO and operator start
+   if (currentValue == "" && value == "*") {
+      $("#output").val("0"+"*");
+      hasDecimal = true;
+      return;
+   }
+   if (currentValue == "" && value == "/") {
+      $("#output").val("0"+"/");
+      hasDecimal = true;
+      return;
+   }
+   if (currentValue == "" && value == "+") {
+      $("#output").val("0"+"+");
+      hasDecimal = true;
+      return;
+   }
+   if (currentValue == "" && value == "-") {
+      $("#output").val("0"+"-");
+      hasDecimal = true;
+      return;
+   }
+   // display ZERO and operator End
    if (value == "0" && (currentValue == "" || currentValue == "0")) return;
    if (isNaN(value)) {
       if (!isNaN(uniChar)) {
@@ -38,13 +61,7 @@ function display(value) {
             $("#output").val(currentValue + value);
             hasDecimal = false;
          }
-      }else if (
-         value == "+" ||
-         value == "*" ||
-         value == "/" ||
-         value == "%" ||
-         value == "-"
-      ) {
+      }else if (value == "+" ||value == "*" ||value == "/" ||value == "%" ||value == "-") {
         $("#output").val(currentValue.slice(0, -1) + value);
       }
 
