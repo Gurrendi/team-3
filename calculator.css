@@ -15,14 +15,15 @@ body {
   background-image: url(removingbackgroundimages_Unsplash.4c9ea595.avif);
 }
 .container {
-padding: 10px;
+  padding: 10px;
   position: relative;
-  margin: 0.5em 0.5em;
+  margin: 0.3em 0.3em;
   border-radius: 20px;
   background-color: #2c4e6c;
   box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
-    10px 10px 70px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(0, 0, 0, 0.25),
-    inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+  10px 10px 70px rgba(0, 0, 0, 0.25), 
+  inset -5px -5px 15px rgba(0, 0, 0, 0.25),
+  inset 5px 5px 15px rgba(0, 0, 0, 0.25);
 }
 input
 {
@@ -41,8 +42,8 @@ input
   text-align: center;
   background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
   box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
-    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
-    10px 20px 25px rgba(0, 0, 0, 0.4);
+  inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
+  10px 20px 25px rgba(0, 0, 0, 0.4);
   user-select: none;
   border-radius: 10px;
   
@@ -121,9 +122,19 @@ width: 70px;
   background: linear-gradient(90deg, #1479c9, #ffffff5c);
 
 }
-@media only screen and (max-width: 400px) {
-   .container {
-    padding:10px 10px;
-  margin: 1em 1em;
+@media only screen and (max-width: 300px) {
+  .container {
+   padding:2px 2px;
+ margin: 1em 1em;
+}
+.calculator input {
+ position: relative;
+ font-style: normal;
+ font-size: 1.2em;
+ width: 50px;
+ text-transform: uppercase;
+}
+.calculator .value {
+height: 70px;
 }
 }
