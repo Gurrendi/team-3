@@ -10,9 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   background-size: cover;
-
-  background-repeat: no-repeat;
-  background-image: url(removingbackgroundimages_Unsplash.4c9ea595.avif);
+  background: url(removingbackgroundimages_Unsplash.4c9ea595.avif) no-repeat;
 }
 .container {
   padding: 10px;
