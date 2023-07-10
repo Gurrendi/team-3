@@ -4,65 +4,95 @@ var hasResultDisplayed = false;
 function display(value) {
    var currentValue = $("#output").val();
    var uniChar = currentValue.slice(-1);
-   if (hasResultDisplayed && !isNaN(value)) {
+   if (hasResultDisplayed && !isNaN(uniChar) && !isNaN(value)) 
+   {
       currentValue = "";
       hasResultDisplayed=false;
    }
-   if (hasResultDisplayed && !isNaN(uniChar)) {
-      currentValue = "";
-      hasResultDisplayed=false;
-   }
-   if (hasResultDisplayed && value == ".") {
+   if (hasResultDisplayed && value == ".") 
+   {
       currentValue = "";
       hasResultDisplayed = false;
    }
-   if (currentValue == "" && value == "0") {
+   if (currentValue == "" && value == "0") 
+   {
       $("#output").val("0");
       hasDecimal = false;
       return;
    }
-   if (currentValue == "" && value == ".") {
+     // display ZERO and operator start
+     if (currentValue == "" && value == "*") {
+      $("#output").val("0"+"*");
+      hasDecimal = true;
+      return;
+   }
+   if (currentValue == "" && value == "/") {
+      $("#output").val("0"+"/");
+      hasDecimal = true;
+      return;
+   }
+   if (currentValue == "" && value == "+") {
+      $("#output").val("0"+"+");
+      hasDecimal = true;
+      return;
+   }
+   if (currentValue == "" && value == "-") {
+      $("#output").val("0"+"-");
+      hasDecimal = true;
+      return;
+   }
+   if (currentValue == "" && value == "%") {
+      $("#output").val("0"+"%");
+      hasDecimal = true;
+      return;
+   }
+
+   if (currentValue === "0" && !operators.includes(btnValue)) result = "";
+   
+   if (currentValue == "" && value == ".") 
+   {
       $("#output").val("0.");
       hasDecimal = true;
       return;
    }
    if (value == "0" && (currentValue == "" || currentValue == "0")) return;
-   if (isNaN(value)) {
-      if (!isNaN(uniChar)) {
-         if (value == ".") {
-            if (!hasDecimal) {
+   if (isNaN(value)) 
+   {
+      if (!isNaN(uniChar)) 
+      {
+         if (value == ".") 
+         {
+            if (!hasDecimal) 
+            {
                $("#output").val(currentValue + value);
                hasDecimal = true;
             }
-         } else if (currentValue != "" &&(value == "+" || value == "*" ||value == "/" ||value == "%" ||value == "-")) {
+         } 
+         else if (currentValue != "" &&(value == "+" ||value == "×" ||value == "÷" ||value == "%" ||value == "-")) 
+         {
             $("#output").val(currentValue + value);
             hasDecimal = false;
          }
-      }else if (
-         value == "+" ||
-         value == "*" ||
-         value == "/" ||
-         value == "%" ||
-         value == "-"
-      ) {
+      }
+      else if (value == "+" ||value == "×" ||value == "÷" ||value == "%" ||value == "-")
+      {
         $("#output").val(currentValue.slice(0, -1) + value);
       }
 
-   } else {
-      if (value == "." && hasDecimal) {
+   } 
+   else 
+   {
+      if (value == "." && hasDecimal) 
+      {
          return;
       }
-      if (currentValue.length >= 20) {
+      if (currentValue.length >= 18) 
+      {
          return;
       }
       $("#output").val(currentValue + value);
-      // $("#output").val(addCommas(currentValue + value));
    }
 }
-//add comma every 3 digit
-// function addCommas(str){
-//    return str.replace(/\W/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-//}
 
 //clearScreen
 function clearScreen() {
@@ -94,8 +124,8 @@ function toggleSign() {
 //For onclick diaplay value
 function calculate() {
    try {
-      var p = $("#output").val();
-         // Check if the expression ends with an operator
+      var p = $("#output").val().replaceAll("×", "*").replaceAll("÷", "/");
+      // Check if the expression ends with an operator
       if (/[+\-*/]$/.test(p)) {
          // If it does, append the last operand to the end of the expression
          var lastOperand = p.match(/[\d.]+$/);
@@ -103,13 +133,13 @@ function calculate() {
       }
       var q = eval(p);
       var result = q;
-      $("#output").val(Number(result).toLocaleString('en-US'));
+      $("#output").val(Number(result).toLocaleString('en-US', ));
       if ((currentValue = "")) {
          result = "0";
       }
       hasResultDisplayed = true;
-      if (result.length < 20) {
-         result = result.substring(0, 20);
+      if (result.length < 19) {
+         result = result.substring(0, 18);
       }
       if (result === Infinity || result === -Infinity) {
          result = "Cannot divide by zero";
