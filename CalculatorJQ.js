@@ -56,13 +56,9 @@ function display(value) {
          return;
       }
       $("#output").val(currentValue + value);
-      // $("#output").val(addCommas(currentValue + value));
    }
 }
-//add comma every 3 digit
-// function addCommas(str){
-//    return str.replace(/\W/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-//}
+
 
 //clearScreen
 function clearScreen() {
