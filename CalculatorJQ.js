@@ -133,7 +133,7 @@ function calculate() {
       }
       var q = eval(p);
       var result = q;
-      $("#output").val(Number(result).toLocaleString('en-US', ));
+      $("#output").val(result);
       if ((currentValue = "")) {
          result = "0";
       }
