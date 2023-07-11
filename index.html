@@ -10,29 +10,29 @@
 
 <body>
     <div class="container">
-        <form action="" name="calc" class="calculator" >
-          <input class="value" type="text" id="output" disabled placeholder="0" onkeyup="test();">
-          <input class="numback" type="button" value="C" id="Clear" onclick="clearScreen()" id="btn" />
-          <input class="numback" type="button" value="⌫" onclick="subtract()" id="sub" />         
-          <input class="num plus" type="button" value="+" onclick="display('+')" />
-          <input class="num"  type="button" value="." onclick="display('.')" />       
-          <input class="num" type="button" value="/" onclick="display('/')" />        
-          <input class="num" type="button" value="*" onclick="display('*')" />
-          <input class="num" type="button" value="7" onclick="display(7)" />
-          <input class="num" type="button" value="8" onclick="display(8)" />
-          <input class="num" type="button" value=9 onclick="display(9)" />
-         <input class="num" type="button" value="-" onclick="display('-')" />
-         <input class="num" id="num" type="button" value="4" onclick="display(4)" />
-         <input class="num" type="button" value="5" onclick="display(5)" />
-          <input class="num" type="button" value="6" onclick="display(6)" />
-          <input class="num" type="button" value="1" onclick="display(1)" />
-          <input class="num" type="button" value="2" onclick="display(2)" />
-         <input class="num" type="button" value="3" onclick="display(3)" />
-         <input  class="equal" type="button" value="=" onclick="calculate() " id="btn" />
-         <input class="num" type="button" value="%" onclick="display('%')" />
-         <input class="num" type="button" value="+/-" onclick="toggleSign() " />
-         <input class="num" type="button" value="0" onclick="display('0')" />
-        </form>
+      <form action="" name="calc" class="calculator" >
+        <input class="value" type="text" id="output" disabled placeholder="0">
+        <input class="numback" type="button" value="C" id="Clear" onclick="clearScreen()" id="btn" />
+        <input class="numback" type="button" value="⌫" onclick="subtract()" id="sub" />         
+        <input class="num plus" type="button" value="+" onclick="display('+')" />
+        <input class="num"  type="button" value="." onclick="display('.')" />       
+        <input class="num" type="button" value="÷" onclick="display('÷')" />        
+        <input class="num" type="button" value="×" onclick="display('×')" />
+        <input class="num" type="button" value="7" onclick="display(7)" />
+        <input class="num" type="button" value="8" onclick="display(8)" />
+        <input class="num" type="button" value=9 onclick="display(9)" />
+        <input class="num" type="button" value="-" onclick="display('-')" />
+        <input class="num" id="num" type="button" value="4" onclick="display(4)" />
+        <input class="num" type="button" value="5" onclick="display(5)" />
+        <input class="num" type="button" value="6" onclick="display(6)" />
+        <input class="num" type="button" value="1" onclick="display(1)" />
+        <input class="num" type="button" value="2" onclick="display(2)" />
+        <input class="num" type="button" value="3" onclick="display(3)" />
+        <input  class="equal" type="button" value="=" onclick="calculate() " id="btn" />
+        <input class="num" type="button" value="%" onclick="display('%')" />
+        <input class="num" type="button" value="+/-" onclick="toggleSign() " />
+        <input class="num" type="button" value="0" onclick="display('0')" />
+      </form>
       </div>
 </div>
 <script src="CalculatorJQ.js"></script>
