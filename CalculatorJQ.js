@@ -4,9 +4,9 @@ var hasResultDisplayed = false;
 function display(value) {
    var currentValue = $("#output").val();
    var uniChar = currentValue.slice(-1);
-   if (hasResultDisplayed && !isNaN(uniChar) && !isNaN(value)) 
+   if (hasResultDisplayed && !(isNaN(uniChar) || isNaN(value))) 
    {
-      currentValue = "";
+      // currentValue = "";
       hasResultDisplayed=false;
    }
    if (hasResultDisplayed && value == ".") 
