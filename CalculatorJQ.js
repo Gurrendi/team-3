@@ -6,7 +6,7 @@ function display(value) {
    var uniChar = currentValue.slice(-1);
    if (hasResultDisplayed && !(isNaN(uniChar) || isNaN(value))) 
    {
-      // currentValue = "";
+ 
       hasResultDisplayed=false;
    }
    if (hasResultDisplayed && value == ".") 
