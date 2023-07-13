@@ -4,51 +4,68 @@ var hasResultDisplayed = false;
 function display(value) {
    var currentValue = $("#output").val();
    var uniChar = currentValue.slice(-1);
-   if (hasResultDisplayed && !isNaN(uniChar) && !isNaN(value)) 
-   {
+
+   if (hasResultDisplayed && !isNaN(uniChar) && isNaN(value)) {
       currentValue = "";
       hasResultDisplayed=false;
    }
-   if (hasResultDisplayed && value == ".") 
+
+   // Add this condition to handle new value input without an operator after calculation
+   if (hasResultDisplayed && !isNaN(value)) {
+      currentValue = "";
+      hasResultDisplayed = false;
+   }
+//Add more
+   if (hasResultDisplayed && isNaN(uniChar) && value == ".") 
    {
       currentValue = "";
       hasResultDisplayed = false;
    }
-   if (currentValue == "" && value == "0") 
+   if ( currentValue == "" && value == "0") 
    {
       $("#output").val("0");
       hasDecimal = false;
       return;
    }
      // display ZERO and operator start
-     if (currentValue == "" && value == "*") {
-      $("#output").val("0"+"*");
+     //add more hasResultDisplayed to do more operator after calulate and delete currentValue=""
+     if (hasResultDisplayed  && value == "×") {
+      $("#output").val("0"+"×");
       hasDecimal = true;
       return;
    }
-   if (currentValue == "" && value == "/") {
-      $("#output").val("0"+"/");
+   if (hasResultDisplayed && value == "÷") {
+      $("#output").val("0"+"÷");
       hasDecimal = true;
       return;
    }
-   if (currentValue == "" && value == "+") {
+   if (hasResultDisplayed &&  value == "+") {
       $("#output").val("0"+"+");
       hasDecimal = true;
       return;
    }
-   if (currentValue == "" && value == "-") {
+   if (hasResultDisplayed  && value == "-") {
       $("#output").val("0"+"-");
       hasDecimal = true;
       return;
    }
-   if (currentValue == "" && value == "%") {
+   if (hasResultDisplayed  && value == "%") {
       $("#output").val("0"+"%");
       hasDecimal = true;
       return;
    }
+   // // display ZERO and operator End
+   //remove 0 at 1st index
+   if (currentValue == "0" && !isNaN(value)) {
+      $("#output").val(value);
+      return;
+   }
+   if (currentValue == "0" && (isNaN(uniChar) || uniChar == " ")) {
+      $("#output").val(value);
+      return;
+   }
 
-   if (currentValue === "0" && !operators.includes(btnValue)) result = "";
-   
+///
    if (currentValue == "" && value == ".") 
    {
       $("#output").val("0.");
@@ -77,6 +94,8 @@ function display(value) {
       else if (value == "+" ||value == "×" ||value == "÷" ||value == "%" ||value == "-")
       {
         $("#output").val(currentValue.slice(0, -1) + value);
+        //add more decimal false to add back when replace operator
+        hasDecimal = false;
       }
 
    } 
@@ -92,20 +111,19 @@ function display(value) {
       }
       $("#output").val(currentValue + value);
    }
+ 
 }
 
 //clearScreen
-function clearScreen() {
-   $("#output").val("");
-   hasDecimal = false;
-}
-// for delete 1 digit
-function subtract() {
-   var input = $("#output");
-
-   if (input.val().substring(".")) {
-      hasDecimal = false;
-      input.val(input.val().substring(0, input.val().length - 1));
+function toggleSign() {
+   var currentValue = $("#output").val();
+   if (currentValue != "") {
+      if (currentValue.startsWith("-")) {
+         $("#output").val(currentValue.substr(1));
+      }
+       else if (currentValue != "") {
+         $("#output").val("-" + currentValue);
+      }
    }
 }
 //For +/- funtion
