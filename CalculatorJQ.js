@@ -113,17 +113,21 @@ function display(value) {
    }
  
 }
-
 //clearScreen
-function toggleSign() {
-   var currentValue = $("#output").val();
-   if (currentValue != "") {
-      if (currentValue.startsWith("-")) {
-         $("#output").val(currentValue.substr(1));
-      }
-       else if (currentValue != "") {
-         $("#output").val("-" + currentValue);
-      }
+function clearScreen() {
+   $("#output").val("");
+   hasDecimal = false;
+}
+function subtract() {
+   var input = $("#output");
+   if (input.val().slice(-1)=="." && input.val().substring('.')) {
+      input.val(input.val().substring(0, input.val().length - 1));
+      hasDecimal = false;    
+   }
+   else
+   {
+      input.val(input.val().substring(0, input.val().length - 1));
+     
    }
 }
 //For +/- funtion
